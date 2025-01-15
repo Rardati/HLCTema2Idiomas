@@ -1,0 +1,7 @@
+{
+  "name": "Idiomas-firestore",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
