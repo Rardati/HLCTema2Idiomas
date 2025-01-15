@@ -19,7 +19,7 @@ export class HomePage {
   }
 
   clicBotonInsertar() {
-    this.firestoreService.insertar('idiomas', this.idiomasEditando).then(() => {
+    this.firestoreService.insertar("idiomas", this.idiomasEditando).then(() => {
       console.log('Idioma creado correctamente!');
       this.idiomasEditando = {} as Idiomas;
     }, (error) => {
