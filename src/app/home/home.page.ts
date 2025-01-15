@@ -10,26 +10,22 @@ import { Idiomas} from '../idiomas';
 })
 export class HomePage {
 
+    idiomasEditando: Idiomas;
+
   constructor(private firestoreService: FirestoreService) {
 
     //Crear una tarea vacia
-    
+    this.idiomasEditando = {} as Idiomas;
   }
 
-  public insertarIdioma(){
-    let idioma:Idiomas = {
-      nombre: "Ingles",
-      descripcion: "Idioma universal"
-    }
-    this.firestoreService.insert("idiomas",idioma).then(
-      (respuesta)=>{
-        console.log("Idioma creado correctamente");
-      },
-      (error)=>{
-        console.error(error);
-      }
-    )
-  }
+  clicBotonInsertar() {
+    this.firestoreService.insertar('idiomas', this.idiomasEditando).then(() => {
+      console.log('Idioma creado correctamente!');
+      this.idiomasEditando = {} as Idiomas;
+    }, (error) => {
+      console.error(error);
+    });
+  }  
 
 
 
