@@ -15,6 +15,7 @@ export class HomePage {
         id: "",
         data: {} as Idiomas
     }];
+    
 
   constructor(private firestoreService: FirestoreService) {
 
@@ -45,5 +46,7 @@ export class HomePage {
       })
     });
   }
+
+  
 
 }
