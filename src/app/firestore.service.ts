@@ -13,4 +13,9 @@ export class FirestoreService {
     return this.angularFirestore.collection(coleccion).add(datos);
   }
 
+  public consultar(coleccion:string){
+    return this.angularFirestore.collection(coleccion).snapshotChanges();
+  }
+
+
 }
