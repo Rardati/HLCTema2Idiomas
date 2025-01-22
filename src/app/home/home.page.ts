@@ -15,6 +15,8 @@ export class HomePage {
         id: "",
         data: {} as Idiomas
     }];
+
+    idIdiomaSelec: string = "";
     
 
   constructor(private firestoreService: FirestoreService) {
@@ -23,6 +25,8 @@ export class HomePage {
     this.idiomasEditando = {} as Idiomas;
 
     this.obtenerIdiomas();
+
+    
   }
 
   clicBotonInsertar() {
@@ -47,6 +51,35 @@ export class HomePage {
     });
   }
 
-  
+  selectIdioma(idiomaSelec : Idiomas) {
+    console.log("Idioma seleccionado: ");
+    console.log(idiomaSelec);
+    this.idIdiomaSelec = idiomaSelec.id;
+    this.idiomasEditando.nombre = idiomaSelec.nombre;
+    this.idiomasEditando.descripcion = idiomaSelec.descripcion;
+    this.idiomasEditando.nivel = idiomaSelec.nivel;
+    this.idiomasEditando.horario = idiomaSelec.horario;
+    this.idiomasEditando.precio = idiomaSelec.precio
+  }
+
+  clicBotonBorrar() {
+    this.firestoreService.borrar("idiomas", this.idIdiomaSelec).then(() => {
+      // Actualizar la lista completa
+      this.obtenerIdiomas();
+      // Limpiar datos de pantalla
+      this.idiomasEditando = {} as Idiomas;
+       
+    })
+
+  }
+
+  clicBotonModificar() {
+    this.firestoreService.actualizar("idiomas", this.idIdiomaSelec, this.idiomasEditando).then(() => {
+      // Actualizar la lista completa
+      this.obtenerIdiomas();
+      // Limpiar datos de pantalla
+      this.idiomasEditando = {} as Idiomas;
+    })
+  }
 
 }

@@ -21,4 +21,14 @@ export class FirestoreService {
     return this.angularFirestore.collection(coleccion).doc(id).delete();
   }
 
+
+  public actualizar(coleccion:string,id:string,datos:any){
+    return this.angularFirestore.collection(coleccion).doc(id).set(datos);
+  }
+
+  public consultarPorId(coleccion:string,id:string){
+    return this.angularFirestore.collection(coleccion).doc(id).snapshotChanges();
+  }
+
+  
 }

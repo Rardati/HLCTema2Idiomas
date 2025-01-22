@@ -16,6 +16,9 @@
     <ion-input [(ngModel)]="idiomasEditando.descripcion"></ion-input>
   </ion-item>
   <ion-button (click)="clicBotonInsertar()">Agregar</ion-button>
+  <ion-button (click)="clicBotonBorrar()">Borrar tarea</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar tarea</ion-button>
+
 
   <h1>Idiomas</h1>
 
@@ -28,8 +31,24 @@
         <ion-row>
           <p>{{ idioma.data.descripcion }}</p>
         </ion-row>
+        <ion-row>
+          <p>{{ idioma.data.nivel }}</p>
+        </ion-row>
+        <ion-row>
+          <p>{{ idioma.data.horario }}</p>
+        </ion-row>
+        <ion-row>
+          <p>{{ idioma.data.precio }}</p>
+        </ion-row>
       </ion-grid>
     </ion-item>
+    <ion-item *ngFor="let idioma of arrayColeccionIdiomas" (click)="selectIdioma(idioma)">
+     
+      
+
+    </ion-item>
   </ion-list>
+
+ 
 
 </ion-content>
