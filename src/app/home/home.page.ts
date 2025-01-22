@@ -25,8 +25,7 @@ export class HomePage {
     this.idiomasEditando = {} as Idiomas;
 
     this.obtenerIdiomas();
-
-    
+        
   }
 
   clicBotonInsertar() {
@@ -84,7 +83,7 @@ export class HomePage {
 
   clicBotonActualizar(){
     this.obtenerIdiomas();
-    
+
   }
 
 }
