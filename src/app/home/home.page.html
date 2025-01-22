@@ -15,9 +15,24 @@
     <ion-label>Descripcion</ion-label>
     <ion-input [(ngModel)]="idiomasEditando.descripcion"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label>Nivel</ion-label>
+    <ion-input [(ngModel)]="idiomasEditando.nivel"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Horario</ion-label>
+    <ion-input [(ngModel)]="idiomasEditando.horario"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio</ion-label>
+    <ion-input [(ngModel)]="idiomasEditando.precio"></ion-input>
+  </ion-item>
+
   <ion-button (click)="clicBotonInsertar()">Agregar</ion-button>
   <ion-button (click)="clicBotonBorrar()">Borrar tarea</ion-button>
   <ion-button (click)="clicBotonModificar()">Modificar tarea</ion-button>
+  <ion-button (click)="clicBotonActualizar()">Actualizar</ion-button>
+
 
 
   <h1>Idiomas</h1>
@@ -43,12 +58,10 @@
       </ion-grid>
     </ion-item>
     <ion-item *ngFor="let idioma of arrayColeccionIdiomas" (click)="selectIdioma(idioma)">
-     
       
-
     </ion-item>
   </ion-list>
 
- 
+
 
 </ion-content>

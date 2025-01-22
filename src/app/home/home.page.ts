@@ -82,4 +82,9 @@ export class HomePage {
     })
   }
 
+  clicBotonActualizar(){
+    this.obtenerIdiomas();
+    
+  }
+
 }
