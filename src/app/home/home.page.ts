@@ -50,7 +50,8 @@ export class HomePage {
     });
   }
 
-  selectIdioma(idiomaSelec) {
+  
+  selectIdioma(idiomaSelec:any) {
     console.log("Idioma seleccionado: ");
     console.log(idiomaSelec);
     this.idIdiomaSelec = idiomaSelec.id;
@@ -80,6 +81,9 @@ export class HomePage {
       this.idiomasEditando = {} as Idiomas;
     })
   }
+
+
+
 
   clicBotonActualizar(){
     this.obtenerIdiomas();
