@@ -50,15 +50,15 @@ export class HomePage {
     });
   }
 
-  selectIdioma(idiomaSelec : Idiomas) {
+  selectIdioma(idiomaSelec) {
     console.log("Idioma seleccionado: ");
     console.log(idiomaSelec);
     this.idIdiomaSelec = idiomaSelec.id;
-    this.idiomasEditando.nombre = idiomaSelec.nombre;
-    this.idiomasEditando.descripcion = idiomaSelec.descripcion;
-    this.idiomasEditando.nivel = idiomaSelec.nivel;
-    this.idiomasEditando.horario = idiomaSelec.horario;
-    this.idiomasEditando.precio = idiomaSelec.precio
+    this.idiomasEditando.nombre = idiomaSelec.data.nombre;
+    this.idiomasEditando.descripcion = idiomaSelec.data.descripcion;
+    this.idiomasEditando.nivel = idiomaSelec.data.nivel;
+    this.idiomasEditando.horario = idiomaSelec.data.horario;
+    this.idiomasEditando.precio = idiomaSelec.data.precio
   }
 
   clicBotonBorrar() {

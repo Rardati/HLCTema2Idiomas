@@ -1,5 +1,5 @@
 export interface Idiomas {
-    id: string;
+   
     
     nombre: string;
     descripcion: string;
