@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { Idiomas} from '../idiomas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -51,7 +52,7 @@ export class HomePage {
   }
 
   
-  selectIdioma(idiomaSelec:any) {
+  selectIdioma(idiomaSelec:any, private router:Router) {
     console.log("Idioma seleccionado: ");
     console.log(idiomaSelec);
     this.idIdiomaSelec = idiomaSelec.id;
@@ -59,7 +60,9 @@ export class HomePage {
     this.idiomasEditando.descripcion = idiomaSelec.data.descripcion;
     this.idiomasEditando.nivel = idiomaSelec.data.nivel;
     this.idiomasEditando.horario = idiomaSelec.data.horario;
-    this.idiomasEditando.precio = idiomaSelec.data.precio
+    this.idiomasEditando.precio = idiomaSelec.data.precio;
+
+    this.router.navigate(['/detalle']);
   }
 
   clicBotonBorrar() {
