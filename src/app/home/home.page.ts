@@ -20,7 +20,7 @@ export class HomePage {
     idIdiomaSelec: string = "";
     
 
-  constructor(private firestoreService: FirestoreService) {
+  constructor(private firestoreService: FirestoreService, private router:Router) {
 
     //Crear una tarea vacia
     this.idiomasEditando = {} as Idiomas;
@@ -52,7 +52,7 @@ export class HomePage {
   }
 
   
-  selectIdioma(idiomaSelec:any, private router:Router) {
+  selectIdioma(idiomaSelec:any) {
     console.log("Idioma seleccionado: ");
     console.log(idiomaSelec);
     this.idIdiomaSelec = idiomaSelec.id;
