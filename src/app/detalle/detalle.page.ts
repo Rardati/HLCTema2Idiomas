@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FirestoreService } from './firestore.service';
+import { FirestoreService } from '../firestore.service';
 import { Idiomas } from '../idiomas';
 
 @Component({
