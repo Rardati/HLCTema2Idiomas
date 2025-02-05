@@ -28,7 +28,6 @@ export class FirestoreService {
 
   public consultarPorId(coleccion:string,id:string){
     return this.angularFirestore.collection(coleccion).doc(id).snapshotChanges();
-
     
   }
 

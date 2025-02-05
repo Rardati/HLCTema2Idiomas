@@ -62,6 +62,7 @@ export class HomePage {
     this.idiomasEditando.horario = idiomaSelec.data.horario;
     this.idiomasEditando.precio = idiomaSelec.data.precio;
 
+    
     this.router.navigate(['/detalle', this.idIdiomaSelec]);
   }
 
