@@ -8,58 +8,64 @@
 
 <ion-content [fullscreen]="true">
   <ion-item>
+    <ion-label>Nombre</ion-label>
+    <ion-input [(ngModel)]="idiomas.nombre"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
     <ion-label>Idiomas</ion-label>
-    <ion-input [(ngModel)]="idiomasEditando.nombre"></ion-input>
+    <ion-input [(ngModel)]="idiomas.nombre"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Descripcion</ion-label>
-    <ion-input [(ngModel)]="idiomasEditando.descripcion"></ion-input>
+    <ion-input [(ngModel)]="idiomas.descripcion"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Nivel</ion-label>
-    <ion-input [(ngModel)]="idiomasEditando.nivel"></ion-input>
+    <ion-input [(ngModel)]="idiomas.nivel"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Horario</ion-label>
-    <ion-input [(ngModel)]="idiomasEditando.horario"></ion-input>
+    <ion-input [(ngModel)]="idiomas.horario"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Precio</ion-label>
-    <ion-input [(ngModel)]="idiomasEditando.precio"></ion-input>
+    <ion-input [(ngModel)]="idiomas.precio"></ion-input>
   </ion-item>
 
   
   <ion-button (click)="clicBotonInsertar()">Agregar</ion-button>
-  <ion-button (click)="clicBotonBorrar()">Borrar tarea</ion-button>
-  <ion-button (click)="clicBotonModificar()">Modificar tarea</ion-button>
-  <ion-button (click)="clicBotonActualizar()">Actualizar</ion-button>
+
+
 
 
 
   <h1>Idiomas</h1>
 
   <ion-list>
-    <ion-item *ngFor="let idioma of arrayColeccionIdiomas">
+    <ion-item *ngFor="let documentIdioma of arrayColeccionIdiomas">
       <ion-grid>
         <ion-row>
-          <h2>{{ idioma.data.nombre }}</h2>
+          <h2>{{ documentIdioma.data.nombre }}</h2>
         </ion-row>
         <ion-row>
-          <p>{{ idioma.data.descripcion }}</p>
+          <p>{{ documentIdioma.data.descripcion }}</p>
         </ion-row>
         <ion-row>
-          <p>{{ idioma.data.nivel }}</p>
+          <p>{{ documentIdioma.data.nivel }}</p>
         </ion-row>
         <ion-row>
-          <p>{{ idioma.data.horario }}</p>
+          <p>{{ documentIdioma.data.horario }}</p>
         </ion-row>
         <ion-row>
-          <p>{{ idioma.data.precio }}</p>
+          <p>{{ documentIdioma.data.precio }}</p>
+        </ion-row>
+        <ion-row>
+          <ion-button (click)="clicBotonBorrar(documentIdioma.id)">Borrar</ion-button>
+          <ion-button (click)="clicBotonModificar(documentIdioma.id, documentIdioma.data)" >Modificar</ion-button>
         </ion-row>
       </ion-grid>
-    </ion-item>
-    <ion-item *ngFor="let idioma of arrayColeccionIdiomas" (click)="selectIdioma(idioma)">
-      
     </ion-item>
   </ion-list>
 

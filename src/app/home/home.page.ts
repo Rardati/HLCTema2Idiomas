@@ -11,29 +11,29 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-    idiomasEditando: Idiomas;
+    idiomas: Idiomas;
     arrayColeccionIdiomas: any = [{
         id: "",
         data: {} as Idiomas
     }];
 
-    idIdiomaSelec: string = "";
+    
     
 
   constructor(private firestoreService: FirestoreService, private router:Router) {
 
     //Crear una tarea vacia
-    this.idiomasEditando = {} as Idiomas;
+    this.idiomas = {} as Idiomas;
 
     this.obtenerIdiomas();
         
   }
 
   clicBotonInsertar() {
-    this.firestoreService.insertar("idiomas", this.idiomasEditando).then(() => {
+    this.firestoreService.insertar("idiomas", this.idiomas).then(() => {
       console.log('Idioma creado correctamente!');
-      this.idiomasEditando = {} as Idiomas;
-    }, (error) => {
+      this.idiomas = {} as Idiomas;
+    }, (error:any) => {
       console.error(error);
     });
   }  
@@ -51,19 +51,20 @@ export class HomePage {
     });
   }
 
+  idIdiomaSelec: string = "";
   
-  selectIdioma(idiomaSelec:any) {
+  selectIdioma(idIdioma:any) {
     console.log("Idioma seleccionado: ");
-    console.log(idiomaSelec);
-    this.idIdiomaSelec = idiomaSelec.id;
-    this.idiomasEditando.nombre = idiomaSelec.data.nombre;
-    this.idiomasEditando.descripcion = idiomaSelec.data.descripcion;
-    this.idiomasEditando.nivel = idiomaSelec.data.nivel;
-    this.idiomasEditando.horario = idiomaSelec.data.horario;
-    this.idiomasEditando.precio = idiomaSelec.data.precio;
+    console.log(idIdioma);
+    this.idIdiomaSelec = idIdioma.id;
+    this.idiomas.nombre =  idIdioma.data.nombre;
+    this.idiomas.descripcion =  idIdioma.data.descripcion;
+    this.idiomas.nivel =  idIdioma.data.nivel;
+    this.idiomas.horario =  idIdioma.data.horario;
+    this.idiomas.precio =  idIdioma.data.precio;
 
     
-    this.router.navigate(['/detalle', this.idIdiomaSelec]);
+    
   }
 
   clicBotonBorrar() {
@@ -71,18 +72,21 @@ export class HomePage {
       // Actualizar la lista completa
       this.obtenerIdiomas();
       // Limpiar datos de pantalla
-      this.idiomasEditando = {} as Idiomas;
+      this.idiomas = {} as Idiomas;
        
     })
 
   }
 
   clicBotonModificar() {
-    this.firestoreService.actualizar("idiomas", this.idIdiomaSelec, this.idiomasEditando).then(() => {
+    this.firestoreService.actualizar("idiomas", this.idIdiomaSelec, this.idiomas).then(() => {
       // Actualizar la lista completa
       this.obtenerIdiomas();
       // Limpiar datos de pantalla
-      this.idiomasEditando = {} as Idiomas;
+      this.idiomas = {} as Idiomas;
+
+      this.router.navigate(['/detalle', this.idIdiomaSelec]);
+
     })
   }
 

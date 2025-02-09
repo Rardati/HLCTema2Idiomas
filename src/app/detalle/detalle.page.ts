@@ -12,12 +12,14 @@ import { Idiomas } from '../idiomas';
 export class DetallePage implements OnInit {
 
   id:string = "";
-  document:any = {
+  documentIdioma:any = {
     id: "",
     data:{} as Idiomas
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService) { }
+  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) {
+    this.documentIdioma.data = {} as Idiomas;
+   }
 
   ngOnInit() {
     let idRecibido = this.activatedRoute.snapshot.paramMap.get('id');
@@ -26,12 +28,12 @@ export class DetallePage implements OnInit {
       
       this.firestoreService.consultarPorId("Idiomas", this.id).subscribe((resultado:any)=>  {
         if(resultado.payload.data() != null) {
-          this.document.id = resultado.payload.id
-          this.document.data = resultado.payload.data();
+          this.documentIdioma.id = resultado.payload.id
+          this.documentIdioma.data = resultado.payload.data();
     
-          console.log(this.document.data.nombre);
+          console.log(this.documentIdioma.data.nombre);
         }else{
-          this.document.data = {} as Idiomas;
+          this.documentIdioma.data = {} as Idiomas;
         } 
     
         });
@@ -44,6 +46,12 @@ export class DetallePage implements OnInit {
   
   }
   
-
+  guardar() {
+    this.firestoreService.actualizar("Idiomas", this.id, this.documentIdioma.data).then(() => {
+      this.router.navigate(["/home"]);
+    }, (error:any) => {
+      console.error(error);
+    });
+  }
 
 }
