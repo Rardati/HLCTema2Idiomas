@@ -48,7 +48,7 @@ export class DetallePage implements OnInit {
   }
   
   guardar() {
-    this.firestoreService.actualizar("Idiomas", this.id, this.idioma.data).then(() => {
+    this.firestoreService.actualizar("idiomas", this.id, this.idioma.data).then(() => {
       this.router.navigate(["/home"]);
     }, (error:any) => {
       console.error(error);
