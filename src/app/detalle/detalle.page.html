@@ -19,35 +19,35 @@
     <ion-row>
       <ion-item>
         <ion-label position="floating">Nombre</ion-label>
-        <ion-input [(ngModel)]="documentIdioma.data.nombre"></ion-input>
+        <ion-input [(ngModel)]="idioma.data.nombre"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item>
         <ion-label position="floating">Descripcion</ion-label>
-        <ion-textarea [(ngModel)]="documentIdioma.data.descripcion"></ion-textarea>
+        <ion-textarea [(ngModel)]="idioma.data.descripcion"></ion-textarea>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item>
         <ion-label position="floating">Nivel</ion-label>
-        <ion-textarea [(ngModel)]="documentIdioma.data.nivel"></ion-textarea>
+        <ion-textarea [(ngModel)]="idioma.data.nivel"></ion-textarea>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item>
         <ion-label position="floating">Horario</ion-label>
-        <ion-input [(ngModel)]="documentIdioma.data.horario"></ion-input>
+        <ion-input [(ngModel)]="idioma.data.horario"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
       <ion-item>
         <ion-label position="floating">Precio</ion-label>
-        <ion-input [(ngModel)]="documentIdioma.data.precio"></ion-input>
+        <ion-input [(ngModel)]="idioma.data.precio"></ion-input>
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-button expand="full" (click)="guardar(id, documentIdioma.data)">Guardar</ion-button>
+      <ion-button expand="full" (click)="guardar()">Guardar</ion-button>
 
     </ion-row>
   </ion-list>

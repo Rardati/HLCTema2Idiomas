@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from '../firestore.service';
 import { Idiomas } from '../idiomas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle',
@@ -12,13 +13,13 @@ import { Idiomas } from '../idiomas';
 export class DetallePage implements OnInit {
 
   id:string = "";
-  documentIdioma:any = {
+ idioma:any = {
     id: "",
     data:{} as Idiomas
   };
 
   constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) {
-    this.documentIdioma.data = {} as Idiomas;
+    this.idioma.data = {} as Idiomas;
    }
 
   ngOnInit() {
@@ -28,12 +29,12 @@ export class DetallePage implements OnInit {
       
       this.firestoreService.consultarPorId("Idiomas", this.id).subscribe((resultado:any)=>  {
         if(resultado.payload.data() != null) {
-          this.documentIdioma.id = resultado.payload.id
-          this.documentIdioma.data = resultado.payload.data();
+          this.idioma.id = resultado.payload.id
+          this.idioma.data = resultado.payload.data();
     
-          console.log(this.documentIdioma.data.nombre);
+          console.log(this.idioma.data.nombre);
         }else{
-          this.documentIdioma.data = {} as Idiomas;
+          this.idioma.data = {} as Idiomas;
         } 
     
         });
@@ -47,7 +48,7 @@ export class DetallePage implements OnInit {
   }
   
   guardar() {
-    this.firestoreService.actualizar("Idiomas", this.id, this.documentIdioma.data).then(() => {
+    this.firestoreService.actualizar("Idiomas", this.id, this.idioma.data).then(() => {
       this.router.navigate(["/home"]);
     }, (error:any) => {
       console.error(error);

@@ -44,26 +44,26 @@
   <h1>Idiomas</h1>
 
   <ion-list>
-    <ion-item *ngFor="let documentIdioma of arrayColeccionIdiomas">
+    <ion-item *ngFor="let idioma of arrayColeccionIdiomas">
       <ion-grid>
         <ion-row>
-          <h2>{{ documentIdioma.data.nombre }}</h2>
+          <h2>{{ idioma.data.nombre }}</h2>
         </ion-row>
         <ion-row>
-          <p>{{ documentIdioma.data.descripcion }}</p>
+          <p>{{ idioma.data.descripcion }}</p>
         </ion-row>
         <ion-row>
-          <p>{{ documentIdioma.data.nivel }}</p>
+          <p>{{ idioma.data.nivel }}</p>
         </ion-row>
         <ion-row>
-          <p>{{ documentIdioma.data.horario }}</p>
+          <p>{{ idioma.data.horario }}</p>
         </ion-row>
         <ion-row>
-          <p>{{ documentIdioma.data.precio }}</p>
+          <p>{{ idioma.data.precio }}</p>
         </ion-row>
         <ion-row>
-          <ion-button (click)="clicBotonBorrar(documentIdioma.id)">Borrar</ion-button>
-          <ion-button (click)="clicBotonModificar(documentIdioma.id, documentIdioma.data)" >Modificar</ion-button>
+          <ion-button (click)="clicBotonBorrar()">Borrar</ion-button>
+          <ion-button (click)="clicBotonModificar()" >Modificar</ion-button>
         </ion-row>
       </ion-grid>
     </ion-item>
