@@ -27,13 +27,13 @@ export class DetallePage implements OnInit {
     if (idRecibido != null) {
       this.id = idRecibido;
       
-      this.firestoreService.consultarPorId("Idiomas", this.id).subscribe((resultado:any)=>  {
-        if(resultado.payload.data() != null) {
+
+      this.firestoreService.consultarPorId("idiomas", this.id).subscribe((resultado:any)=>  {    
+        if(resultado.payload.data() != null) {          
           this.idioma.id = resultado.payload.id
-          this.idioma.data = resultado.payload.data();
-    
+          this.idioma.data = resultado.payload.data();    
           console.log(this.idioma.data.nombre);
-        }else{
+        }else{          
           this.idioma.data = {} as Idiomas;
         } 
     

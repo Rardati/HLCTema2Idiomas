@@ -78,17 +78,16 @@ export class HomePage {
 
   }
 
-  clicBotonModificar() {
-    this.firestoreService.actualizar("idiomas", this.idIdiomaSelec, this.idiomas).then(() => {
-      // Actualizar la lista completa
-      this.obtenerIdiomas();
-      // Limpiar datos de pantalla
-      this.idiomas = {} as Idiomas;
+  
+    clicBotonModificar(id: string, datos: any) {
+      this.router.navigate(['/detalle', id]);
+  
+  
+  
+    }
 
-      this.router.navigate(['/detalle', this.idIdiomaSelec]);
-
-    })
-  }
+  
+  
 
 
 
