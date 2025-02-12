@@ -53,6 +53,21 @@
       
     </ion-row>
   </ion-list>
+
+   <!-- Formulario para editar/crear idioma -->
+   <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="idioma.data.nombre"></ion-input>
+  </ion-item>
+  <!-- Otros campos del formulario -->
+
+  <ion-button expand="full" (click)="guardar()">
+    {{ nuevoDato ? 'Guardar' : 'Modificar' }}
+  </ion-button>
+
+  <ion-button expand="full" color="danger" *ngIf="!nuevoDato" (click)="clicBotonBorrar()">
+    Borrar
+  </ion-button>
  
   
 </ion-content>

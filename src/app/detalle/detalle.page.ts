@@ -18,6 +18,7 @@ export class DetallePage implements OnInit {
     id: "",
     data:{} as Idiomas
   };
+  nuevoDato: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) {
     this.idioma.data = {} as Idiomas;
@@ -27,8 +28,9 @@ export class DetallePage implements OnInit {
     let idRecibido = this.activatedRoute.snapshot.paramMap.get('id');
     if (idRecibido != null) {
       this.id = idRecibido;
+      this.nuevoDato = this.id === "nuevo";
       
-
+      if (!this.nuevoDato) {
       this.firestoreService.consultarPorId("idiomas", this.id).subscribe((resultado:any)=>  {    
         if(resultado.payload.data() != null) {          
           this.idioma.id = resultado.payload.id
@@ -39,6 +41,7 @@ export class DetallePage implements OnInit {
         } 
     
         });
+      }
         
     } else {
       this.id = "";
@@ -49,22 +52,31 @@ export class DetallePage implements OnInit {
   }
   
   guardar() {
-    this.firestoreService.actualizar("idiomas", this.id, this.idioma.data).then(() => {
-      this.router.navigate(["/home"]);
-    }, (error:any) => {
-      console.error(error);
-    });
+    if (this.nuevoDato) {
+      this.firestoreService.insertar("idiomas", this.idioma.data).then(() => {
+        this.router.navigate(["/home"]);
+      }, (error: any) => {
+        console.error(error);
+      });
+    } else {
+      this.firestoreService.actualizar("idiomas", this.id, this.idioma.data).then(() => {
+        this.router.navigate(["/home"]);
+      }, (error: any) => {
+        console.error(error);
+      });
+    }
   }
 
   clicBotonBorrar() {
-    this.firestoreService.borrar("idiomas", this.id).then(() => {
-      // Actualizar la lista completa
-      this.router.navigate(["/home"]);
-      // Limpiar datos de pantalla
-      this.idioma = {} as Idiomas;
-    })
-
+    if (!this.nuevoDato) {
+      this.firestoreService.borrar("idiomas", this.id).then(() => {
+        this.router.navigate(["/home"]);
+        this.idioma = {} as Idiomas;
+      });
+    }
   }
+
+  
 
   
     clicBotonModificar(id: string, datos: any) {

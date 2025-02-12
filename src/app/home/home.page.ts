@@ -39,8 +39,8 @@ export class HomePage {
     });
   }  
 
-  navigateToDetail() {
-    this.navCtrl.navigateForward('/detalle',);
+  navigateToDetail(id:string) {
+    this.navCtrl.navigateForward(`/detalle/${id}`);
   }
 
   
@@ -68,7 +68,7 @@ export class HomePage {
     this.idiomas.horario =  idIdioma.data.horario;
     this.idiomas.precio =  idIdioma.data.precio;
 
-     this.navigateToDetail();
+    
     
   }
 
