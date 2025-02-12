@@ -61,14 +61,15 @@
         <ion-row>
           <p>{{ idioma.data.precio }}</p>
         </ion-row>
-        <ion-row>
-          <ion-button (click)="clicBotonBorrar()">Borrar</ion-button>
-          <ion-button (click)="clicBotonModificar(idioma.id,idioma.data)" >Modificar</ion-button>
-        </ion-row>
+       
       </ion-grid>
     </ion-item>
   </ion-list>
 
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="navigateToDetail()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FirestoreService } from '../firestore.service';
 import { Idiomas} from '../idiomas';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomePage {
     
     
 
-  constructor(private firestoreService: FirestoreService, private router:Router) {
+  constructor(private firestoreService: FirestoreService, private router:Router, private navCtrl: NavController) {
 
     //Crear una tarea vacia
     this.idiomas = {} as Idiomas;
@@ -38,7 +39,11 @@ export class HomePage {
     });
   }  
 
+  navigateToDetail() {
+    this.navCtrl.navigateForward('/detalle',);
+  }
 
+  
   obtenerIdiomas() {
     this.firestoreService.consultar("idiomas").subscribe((resultadoConsultaIdiomas) => {
       this.arrayColeccionIdiomas = [];
@@ -63,10 +68,11 @@ export class HomePage {
     this.idiomas.horario =  idIdioma.data.horario;
     this.idiomas.precio =  idIdioma.data.precio;
 
-    
+     this.navigateToDetail();
     
   }
 
+  /*
   clicBotonBorrar() {
     this.firestoreService.borrar("idiomas", this.idIdiomaSelec).then(() => {
       // Actualizar la lista completa
@@ -88,8 +94,7 @@ export class HomePage {
 
   
   
-
-
+*/
 
 
   clicBotonActualizar(){

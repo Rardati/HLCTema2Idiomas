@@ -7,13 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { DetallePageRoutingModule } from './detalle-routing.module';
 
 import { DetallePage } from './detalle.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetallePageRoutingModule
+    DetallePageRoutingModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: DetallePage
+      }
+    ])
   ],
   declarations: [DetallePage]
 })

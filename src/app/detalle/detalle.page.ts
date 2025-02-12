@@ -4,6 +4,7 @@ import { FirestoreService } from '../firestore.service';
 import { Idiomas } from '../idiomas';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.page.html',
@@ -54,5 +55,23 @@ export class DetallePage implements OnInit {
       console.error(error);
     });
   }
+
+  clicBotonBorrar() {
+    this.firestoreService.borrar("idiomas", this.id).then(() => {
+      // Actualizar la lista completa
+      this.router.navigate(["/home"]);
+      // Limpiar datos de pantalla
+      this.idioma = {} as Idiomas;
+    })
+
+  }
+
+  
+    clicBotonModificar(id: string, datos: any) {
+      this.router.navigate(['/detalle', id]);
+  
+  
+  
+    }
 
 }
