@@ -13,7 +13,7 @@
 
   <ion-list>
     <ion-row>
-      <p>ID: {{id}}</p>
+      <p *ngIf="!nuevoDato">ID: {{id}}</p>
     </ion-row>
 
     <ion-row>
@@ -47,30 +47,19 @@
       </ion-item>
     </ion-row>
     <ion-row>
-      <ion-button expand="full" (click)="guardar()">Guardar</ion-button>
-      <ion-button (click)="clicBotonBorrar()">Borrar</ion-button>
-      <ion-button (click)="clicBotonModificar(idioma.id,idioma.data)" >Modificar</ion-button>
-      
+      <ion-button expand="full" (click)="guardar()">
+        {{ nuevoDato ? 'Guardar' : 'Modificar' }}
+      </ion-button>
+      <ion-button expand="full" color="danger" *ngIf="!nuevoDato" (click)="clicBotonBorrar()">
+        Borrar
+      </ion-button>
     </ion-row>
   </ion-list>
 
-   <!-- Formulario para editar/crear idioma -->
-   <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="idioma.data.nombre"></ion-input>
-  </ion-item>
-  <!-- Otros campos del formulario -->
-
-  <ion-button expand="full" (click)="guardar()">
-    {{ nuevoDato ? 'Guardar' : 'Modificar' }}
-  </ion-button>
-
-  <ion-button expand="full" color="danger" *ngIf="!nuevoDato" (click)="clicBotonBorrar()">
-    Borrar
-  </ion-button>
- 
-  
+  <!-- Botón flotante para añadir nuevos elementos -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="botonFlotante()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
-
-
-

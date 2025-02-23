@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from '../firestore.service';
 import { Idiomas } from '../idiomas';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -14,41 +15,46 @@ import { Router } from '@angular/router';
 export class DetallePage implements OnInit {
 
   id:string = "";
- idioma:any = {
+  /*idioma:any = {
     id: "",
     data:{} as Idiomas
-  };
+  };*/
+  idioma: any = { data: {} };
   nuevoDato: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private firestoreService: FirestoreService, private router: Router) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private firestoreService: FirestoreService, 
+    private router: Router,
+    private alertController: AlertController
+  ) {
     this.idioma.data = {} as Idiomas;
    }
 
-  ngOnInit() {
+   ngOnInit() {
     let idRecibido = this.activatedRoute.snapshot.paramMap.get('id');
     if (idRecibido != null) {
       this.id = idRecibido;
       this.nuevoDato = this.id === "nuevo";
       
       if (!this.nuevoDato) {
-      this.firestoreService.consultarPorId("idiomas", this.id).subscribe((resultado:any)=>  {    
-        if(resultado.payload.data() != null) {          
-          this.idioma.id = resultado.payload.id
-          this.idioma.data = resultado.payload.data();    
-          console.log(this.idioma.data.nombre);
-        }else{          
-          this.idioma.data = {} as Idiomas;
-        } 
-    
+        this.firestoreService.consultarPorId("idiomas", this.id).subscribe((resultado: any) => {    
+          if (resultado.payload.data() != null) {          
+            this.idioma.id = resultado.payload.id;
+            this.idioma.data = resultado.payload.data();    
+            console.log(this.idioma.data.nombre);
+          } else {          
+            this.idioma.data = {} as Idiomas;
+          } 
         });
       }
-        
     } else {
       this.id = "";
     }
+  }
 
-    
-  
+  botonFlotante() {
+    this.router.navigate(['/detalle', 'new']);
   }
   
   guardar() {
@@ -76,14 +82,7 @@ export class DetallePage implements OnInit {
     }
   }
 
-  
-
-  
-    clicBotonModificar(id: string, datos: any) {
-      this.router.navigate(['/detalle', id]);
-  
-  
-  
-    }
-
+  clicBotonModificar(id: string, datos: any) {
+    this.router.navigate(['/detalle', id]);
+  }
 }
