@@ -11,24 +11,25 @@ import { NavController } from '@ionic/angular';
   standalone: false,
 })
 export class HomePage {
+  arrayColeccionIdiomas: any = [];
+  idiomas: any = {};
 
-    idiomas: Idiomas;
-    arrayColeccionIdiomas: any = [{
-        id: "",
-        data: {} as Idiomas
-    }];
+  constructor(private router: Router, private firestoreService: FirestoreService) {}
 
-    
-    
+  navigateToDetail(id: string) {
+    this.router.navigate(['/detalle', id]);
+  }
+}
 
-  constructor(private firestoreService: FirestoreService, private router:Router, private navCtrl: NavController) {
 
+
+/*
     //Crear una tarea vacia
     this.idiomas = {} as Idiomas;
 
     this.obtenerIdiomas();
         
-  }
+  
 
   clicBotonInsertar() {
     this.firestoreService.insertar("idiomas", this.idiomas).then(() => {
@@ -39,11 +40,9 @@ export class HomePage {
     });
   }  
 
-  navigateToDetail(id:string) {
-    this.navCtrl.navigateForward(`/detalle/${id}`);
-  }
-
   
+
+   
   obtenerIdiomas() {
     this.firestoreService.consultar("idiomas").subscribe((resultadoConsultaIdiomas) => {
       this.arrayColeccionIdiomas = [];
@@ -72,7 +71,7 @@ export class HomePage {
     
   }
 
-  /*
+ 
   clicBotonBorrar() {
     this.firestoreService.borrar("idiomas", this.idIdiomaSelec).then(() => {
       // Actualizar la lista completa
@@ -94,7 +93,7 @@ export class HomePage {
 
   
   
-*/
+
 
 
   clicBotonActualizar(){
@@ -102,4 +101,4 @@ export class HomePage {
 
   }
 
-}
+}*/
