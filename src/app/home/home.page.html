@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Idiomas
-    </ion-title>
+    <ion-title>Idiomas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,64 +12,43 @@
     <ion-input [(ngModel)]="idiomas.nombre"></ion-input>
   </ion-item>
 
- 
-  <ion-item>
-    <ion-label>Idiomas</ion-label>
-    <ion-input [(ngModel)]="idiomas.nombre"></ion-input>
-  </ion-item>
   <ion-item>
     <ion-label>Descripcion</ion-label>
     <ion-input [(ngModel)]="idiomas.descripcion"></ion-input>
   </ion-item>
+
   <ion-item>
     <ion-label>Nivel</ion-label>
     <ion-input [(ngModel)]="idiomas.nivel"></ion-input>
   </ion-item>
+
   <ion-item>
     <ion-label>Horario</ion-label>
     <ion-input [(ngModel)]="idiomas.horario"></ion-input>
   </ion-item>
+
   <ion-item>
     <ion-label>Precio</ion-label>
     <ion-input [(ngModel)]="idiomas.precio"></ion-input>
-  </ion-item>
-
-  
-  <ion-button (click)="clicBotonInsertar()">Agregar</ion-button>
- -->
-
-
-
-
-  <!-- <h1>Idiomas</h1>  -->
+  </ion-item> 
+  -->
 
   <ion-list>
-    <ion-item *ngFor="let idioma of arrayColeccionIdiomas">
+    <ion-item *ngFor="let idioma of arrayColeccionIdiomas" (click)="navigateToDetail(idioma.id)">
       <ion-grid>
-        <ion-row>
-          <h2>{{ idioma.data.nombre }}</h2>
-        </ion-row>
-        <ion-row>
-          <p>{{ idioma.data.descripcion }}</p>
-        </ion-row>
-        <ion-row>
-          <p>{{ idioma.data.nivel }}</p>
-        </ion-row>
-        <ion-row>
-          <p>{{ idioma.data.horario }}</p>
-        </ion-row>
-        <ion-row>
-          <p>{{ idioma.data.precio }}</p>
-        </ion-row>
-       
+        <ion-row><h2>{{ idioma.data.nombre }}</h2></ion-row>
+        <ion-row><p>{{ idioma.data.descripcion }}</p></ion-row>
+        <ion-row><p>{{ idioma.data.nivel }}</p></ion-row>
+        <ion-row><p>{{ idioma.data.horario }}</p></ion-row>
+        <ion-row><p>{{ idioma.data.precio }}</p></ion-row>
       </ion-grid>
     </ion-item>
   </ion-list>
 
+  <!-- Botón flotante para añadir un nuevo idioma -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="navigateToDetail('nuevoDato')">
+    <ion-fab-button (click)="navigateToDetail('nuevo')">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>

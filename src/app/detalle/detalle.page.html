@@ -5,12 +5,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-list>
     <ion-row>
       <p *ngIf="!nuevoDato">ID: {{id}}</p>
@@ -22,44 +16,43 @@
         <ion-input [(ngModel)]="idioma.data.nombre"></ion-input>
       </ion-item>
     </ion-row>
+
     <ion-row>
       <ion-item>
         <ion-label position="floating">Descripcion</ion-label>
         <ion-textarea [(ngModel)]="idioma.data.descripcion"></ion-textarea>
       </ion-item>
     </ion-row>
+
     <ion-row>
       <ion-item>
         <ion-label position="floating">Nivel</ion-label>
-        <ion-textarea [(ngModel)]="idioma.data.nivel"></ion-textarea>
+        <ion-input [(ngModel)]="idioma.data.nivel"></ion-input>
       </ion-item>
     </ion-row>
+
     <ion-row>
       <ion-item>
         <ion-label position="floating">Horario</ion-label>
         <ion-input [(ngModel)]="idioma.data.horario"></ion-input>
       </ion-item>
     </ion-row>
+
     <ion-row>
       <ion-item>
         <ion-label position="floating">Precio</ion-label>
         <ion-input [(ngModel)]="idioma.data.precio"></ion-input>
       </ion-item>
     </ion-row>
+
     <ion-row>
       <ion-button expand="full" (click)="guardar()">
         {{ nuevoDato ? 'Guardar' : 'Modificar' }}
       </ion-button>
+
       <ion-button expand="full" color="danger" *ngIf="!nuevoDato" (click)="clicBotonBorrar()">
         Borrar
       </ion-button>
     </ion-row>
   </ion-list>
-
-  <!-- Botón flotante para añadir nuevos elementos -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="botonFlotante()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>
