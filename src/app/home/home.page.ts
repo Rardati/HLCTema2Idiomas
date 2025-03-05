@@ -10,10 +10,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
-
-  
-        
+export class HomePage {     
   
   arrayColeccionIdiomas: any = [];
   idiomas: any = {};
@@ -28,20 +25,19 @@ export class HomePage {
     this.router.navigate(['/detalle', id]);
   }
 
+  obtenerIdiomas() {
+    this.firestoreService.consultar("idiomas_raquel").subscribe((resultadoConsultaIdiomas) => {
+      this.arrayColeccionIdiomas = [];
+      resultadoConsultaIdiomas.forEach((datosIdiomas: any) => {
+        this.arrayColeccionIdiomas.push({
+          id: datosIdiomas.payload.doc.id,
+          data: datosIdiomas.payload.doc.data()
+        });
+      })
+    });
+  }
   
-
-  
-
-
 /*
-    //Crear una tarea vacia
-    this.idiomas = {} as Idiomas;
-
-    this.obtenerIdiomas();
-        
-  
-*/
-
   clicBotonInsertar() {
     this.firestoreService.insertar("idiomas", this.idiomas).then(() => {
       console.log('Idioma creado correctamente!');
@@ -54,17 +50,7 @@ export class HomePage {
   
 
    
-  obtenerIdiomas() {
-    this.firestoreService.consultar("idiomas").subscribe((resultadoConsultaIdiomas) => {
-      this.arrayColeccionIdiomas = [];
-      resultadoConsultaIdiomas.forEach((datosIdiomas: any) => {
-        this.arrayColeccionIdiomas.push({
-          id: datosIdiomas.payload.doc.id,
-          data: datosIdiomas.payload.doc.data()
-        });
-      })
-    });
-  }
+
 
   idIdiomaSelec: string = "";
   
@@ -102,6 +88,6 @@ export class HomePage {
   
     }
 
-  
+  */
 
 }

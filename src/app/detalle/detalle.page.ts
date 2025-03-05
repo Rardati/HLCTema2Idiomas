@@ -30,7 +30,7 @@ export class DetallePage implements OnInit {
       this.nuevoDato = this.id === "nuevo";
 
       if (!this.nuevoDato) {
-        this.firestoreService.consultarPorId("idiomas", this.id).subscribe((resultado: any) => {    
+        this.firestoreService.consultarPorId("idiomas_raquel", this.id).subscribe((resultado: any) => {    
           if (resultado.payload.data()) {          
             this.idioma.id = resultado.payload.id;
             this.idioma.data = resultado.payload.data();    
@@ -44,11 +44,11 @@ export class DetallePage implements OnInit {
 
   guardar() {
     if (this.nuevoDato) {
-      this.firestoreService.insertar("idiomas", this.idioma.data).then(() => {
+      this.firestoreService.insertar("idiomas_raquel", this.idioma.data).then(() => {
         this.router.navigate(["/home"]);
       }).catch(error => console.error(error));
     } else {
-      this.firestoreService.actualizar("idiomas", this.id, this.idioma.data).then(() => {
+      this.firestoreService.actualizar("idiomas_raquel", this.id, this.idioma.data).then(() => {
         this.router.navigate(["/home"]);
       }).catch(error => console.error(error));
     }
@@ -62,7 +62,7 @@ export class DetallePage implements OnInit {
         buttons: [
           { text: 'Cancelar', role: 'cancel' },
           { text: 'Eliminar', handler: () => {
-              this.firestoreService.borrar("idiomas", this.id).then(() => {
+              this.firestoreService.borrar("idiomas_raquel", this.id).then(() => {
                 this.router.navigate(["/home"]);
               });
             }
