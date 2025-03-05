@@ -11,16 +11,26 @@ import { NavController } from '@ionic/angular';
   standalone: false,
 })
 export class HomePage {
+
+  
+        
+  
   arrayColeccionIdiomas: any = [];
   idiomas: any = {};
 
-  constructor(private router: Router, private firestoreService: FirestoreService) {}
+  constructor(private router: Router, private firestoreService: FirestoreService) {
+    this.idiomas = {} as Idiomas;
+
+    this.obtenerIdiomas();
+  }
 
   navigateToDetail(id: string) {
     this.router.navigate(['/detalle', id]);
   }
-}
 
+  
+
+  
 
 
 /*
@@ -30,6 +40,7 @@ export class HomePage {
     this.obtenerIdiomas();
         
   
+*/
 
   clicBotonInsertar() {
     this.firestoreService.insertar("idiomas", this.idiomas).then(() => {
@@ -92,13 +103,5 @@ export class HomePage {
     }
 
   
-  
 
-
-
-  clicBotonActualizar(){
-    this.obtenerIdiomas();
-
-  }
-
-}*/
+}
