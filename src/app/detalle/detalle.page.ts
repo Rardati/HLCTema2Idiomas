@@ -4,7 +4,7 @@ import { FirestoreService } from '../firestore.service';
 import { Idiomas } from '../idiomas';
 import { AlertController } from '@ionic/angular';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 
 @Component({
   selector: 'app-detalle',
