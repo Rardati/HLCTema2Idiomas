@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from '../firestore.service';
 import { Idiomas } from '../idiomas';
 import { AlertController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @Component({
   selector: 'app-detalle',
@@ -18,7 +20,11 @@ export class DetallePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private firestoreService: FirestoreService, 
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private toastController: ToastController,
+    private imagePickerr: ImagePicker
+
   ) {
     this.idioma.data = {} as Idiomas;
   }
